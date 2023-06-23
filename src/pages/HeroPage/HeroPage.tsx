@@ -8,7 +8,7 @@ import { useGameLogic } from '../../hooks';
 import '../../index.css';
 
 const HeroPage = () => {
-  const { isGameOver, setCurrentPlayer, currentPlayer } = useGameLogic();
+  const { isGameOver, isPlayerFirst, setPlayerFirst } = useGameLogic();
 
   return (
     <Container className="container" maxWidth="xl">
@@ -27,9 +27,16 @@ const HeroPage = () => {
               Choose the first player:
             </Typography>
             <Box>
+              <Typography
+                sx={{ padding: '0' }}
+                variant="body1"
+                component="span"
+              >
+                AI
+              </Typography>
               <Switch
-                checked={currentPlayer === 2}
-                onChange={() => setCurrentPlayer(currentPlayer === 1 ? 2 : 1)}
+                checked={isPlayerFirst}
+                onChange={() => setPlayerFirst(!isPlayerFirst)}
                 color="primary"
                 name="player-switch"
                 inputProps={{ 'aria-label': 'Player Switch' }}
@@ -39,7 +46,7 @@ const HeroPage = () => {
                 variant="body1"
                 component="span"
               >
-                {currentPlayer === 1 ? 'Human' : 'AI'}
+                Human
               </Typography>
             </Box>
           </Box>

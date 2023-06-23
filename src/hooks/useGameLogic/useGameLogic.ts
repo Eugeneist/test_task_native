@@ -4,8 +4,9 @@ const useGameLogic = () => {
   const [matchesLeft, setMatchesLeft] = useState(25);
   const [playerScore, setPlayerScore] = useState(0);
   const [AIScore, setAIScore] = useState(0);
-  const [currentPlayer, setCurrentPlayer] = useState(1);
-  const [selectionEnabled, setSelectionEnabled] = useState(true);
+  const [isPlayerFirst, setPlayerFirst] = useState(true);
+  const [currentPlayer, setCurrentPlayer] = useState(isPlayerFirst ? 1 : 2);
+  const [selectionEnabled, setSelectionEnabled] = useState(isPlayerFirst);
   const [isGameOver, setIsGameOver] = useState(false);
   const [winner, setWinner] = useState<number | null>(null);
 
@@ -86,6 +87,8 @@ const useGameLogic = () => {
     handleTakeMatches,
     handlePlayAgain,
     setCurrentPlayer,
+    isPlayerFirst,
+    setPlayerFirst,
     winner,
   };
 };
