@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const useGameLogic = () => {
   const [matchesLeft, setMatchesLeft] = useState(25);
@@ -26,9 +26,10 @@ const useGameLogic = () => {
   useEffect(() => {
     if (currentPlayer === 2 && !isGameOver) {
       // Хід AI
-
-      const matchesToTake = getAIMatchesToTake();
-      handleTakeMatches(matchesToTake);
+      setTimeout(() => {
+        const matchesToTake = getAIMatchesToTake();
+        handleTakeMatches(matchesToTake);
+      }, 1000);
     }
   }, [currentPlayer, matchesLeft, isGameOver]);
 
@@ -50,16 +51,16 @@ const useGameLogic = () => {
 
     let matchesToTake = 0;
     if (remainder === 0 && matchesLeft >= 3) {
-      // Залишок спічок після ділення на 4 дорівнює 1
+      // Залишок сірників після ділення на 4 дорівнює 1
       matchesToTake = Math.floor(Math.random() * (availableMatches - 1)) + 1;
     } else if (remainder === 2 && matchesLeft >= 2) {
-      // Залишок спічок після ділення на 4 дорівнює 2
+      // Залишок сірників після ділення на 4 дорівнює 2
       matchesToTake = 2;
     } else if (remainder === 3 && matchesLeft >= 1) {
-      // Залишок спічок після ділення на 4 дорівнює 3
+      // Залишок сірників після ділення на 4 дорівнює 3
       matchesToTake = 1;
     } else {
-      // Залишок спічок після ділення на 4 дорівнює 0
+      // Залишок сірників після ділення на 4 дорівнює 0
       matchesToTake = Math.floor(Math.random() * availableMatches) + 1;
     }
 
