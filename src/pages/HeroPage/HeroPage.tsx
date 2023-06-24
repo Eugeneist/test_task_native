@@ -7,6 +7,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import { useGameLogic } from '../../hooks';
+import { Rules } from '../../components';
 import '../../index.css';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -52,6 +53,7 @@ const HeroPage = () => {
 
   return (
     <Container className="container" maxWidth="xl">
+      <Rules />
       <Box className="container__inner">
         <Typography
           variant="h1"

@@ -189,7 +189,7 @@ const Game = () => {
               )}
             </Stack>
             <Box sx={{ display: 'flex', alignItems: 'start' }}>
-              <IconButton aria-label="delete" component={Link} to="/">
+              <IconButton aria-label="home" component={Link} to="/">
                 <CottageRoundedIcon color="warning" fontSize="large" />
               </IconButton>
             </Box>

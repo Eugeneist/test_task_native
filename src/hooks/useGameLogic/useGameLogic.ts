@@ -1,6 +1,21 @@
 import { useState, useEffect } from 'react';
 
-const useGameLogic = (n = 12, m = 3): number => {
+interface GameLogicProps {
+  matchesLeft: number;
+  playerScore: number;
+  AIScore: number;
+  currentPlayer: number;
+  selectionEnabled: boolean;
+  isGameOver: boolean;
+  handleTakeMatches: (count: number) => void;
+  handlePlayAgain: () => void;
+  setCurrentPlayer: (player: number) => void;
+  isPlayerFirst: boolean;
+  handleChangeMode: (value: boolean) => void;
+  winner: number | null;
+}
+
+const useGameLogic = (n = 12, m = 3): GameLogicProps => {
   const [matchesLeft, setMatchesLeft] = useState(2 * n + 1);
   const [playerScore, setPlayerScore] = useState(0);
   const [AIScore, setAIScore] = useState(0);
