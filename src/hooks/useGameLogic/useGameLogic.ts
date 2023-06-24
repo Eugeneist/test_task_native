@@ -4,11 +4,18 @@ const useGameLogic = () => {
   const [matchesLeft, setMatchesLeft] = useState(25);
   const [playerScore, setPlayerScore] = useState(0);
   const [AIScore, setAIScore] = useState(0);
-  const [isPlayerFirst, setPlayerFirst] = useState(true);
+  const [isPlayerFirst, setIsPlayerFirst] = useState(() => {
+    const storedValue = localStorage.getItem('isPlayerFirst');
+    return storedValue ? JSON.parse(storedValue) : false;
+  });
   const [currentPlayer, setCurrentPlayer] = useState(isPlayerFirst ? 1 : 2);
   const [selectionEnabled, setSelectionEnabled] = useState(isPlayerFirst);
   const [isGameOver, setIsGameOver] = useState(false);
   const [winner, setWinner] = useState<number | null>(null);
+
+  useEffect(() => {
+    localStorage.setItem('isPlayerFirst', JSON.stringify(isPlayerFirst));
+  }, [isPlayerFirst]);
 
   useEffect(() => {
     setIsGameOver(matchesLeft === 0);
@@ -68,6 +75,10 @@ const useGameLogic = () => {
     return Math.min(matchesToTake, availableMatches);
   };
 
+  const handleChangeMode = (value: boolean) => {
+    setIsPlayerFirst(value);
+  };
+
   const handlePlayAgain = () => {
     setMatchesLeft(25);
     setCurrentPlayer(1);
@@ -88,7 +99,7 @@ const useGameLogic = () => {
     handlePlayAgain,
     setCurrentPlayer,
     isPlayerFirst,
-    setPlayerFirst,
+    handleChangeMode,
     winner,
   };
 };

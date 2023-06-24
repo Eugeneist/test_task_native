@@ -8,7 +8,7 @@ import { useGameLogic } from '../../hooks';
 import '../../index.css';
 
 const HeroPage = () => {
-  const { isGameOver, isPlayerFirst, setPlayerFirst } = useGameLogic();
+  const { isGameOver, isPlayerFirst, handleChangeMode } = useGameLogic();
 
   return (
     <Container className="container" maxWidth="xl">
@@ -36,7 +36,7 @@ const HeroPage = () => {
               </Typography>
               <Switch
                 checked={isPlayerFirst}
-                onChange={() => setPlayerFirst(!isPlayerFirst)}
+                onChange={() => handleChangeMode(!isPlayerFirst)}
                 color="primary"
                 name="player-switch"
                 inputProps={{ 'aria-label': 'Player Switch' }}
