@@ -22,7 +22,6 @@ const Game = () => {
     isGameOver,
     handleTakeMatches,
     handlePlayAgain,
-    setCurrentPlayer,
     winner,
   } = useGameLogic();
 

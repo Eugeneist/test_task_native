@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-const useGameLogic = () => {
-  const [matchesLeft, setMatchesLeft] = useState(25);
+const useGameLogic = (n = 12, m = 3): number => {
+  const [matchesLeft, setMatchesLeft] = useState(2 * n + 1);
   const [playerScore, setPlayerScore] = useState(0);
   const [AIScore, setAIScore] = useState(0);
   const [isPlayerFirst, setIsPlayerFirst] = useState(() => {
@@ -54,8 +54,8 @@ const useGameLogic = () => {
   };
 
   const getAIMatchesToTake = (): number => {
-    const availableMatches = Math.min(matchesLeft, 3);
-    const remainder = (matchesLeft - 1) % 4;
+    const availableMatches = Math.min(matchesLeft, m);
+    const remainder = matchesLeft % (m + 1);
 
     let matchesToTake = 0;
     if (remainder === 0 && matchesLeft >= 3) {
@@ -80,7 +80,7 @@ const useGameLogic = () => {
   };
 
   const handlePlayAgain = () => {
-    setMatchesLeft(25);
+    setMatchesLeft(2 * n + 1);
     setCurrentPlayer(1);
     setSelectionEnabled(true);
     setPlayerScore(0);

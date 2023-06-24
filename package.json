@@ -1,5 +1,6 @@
 {
   "name": "test_task_native",
+  "homepage": "https://eugeneist.github.io/test_task_native",
   "private": true,
   "version": "0.0.0",
   "type": "module",
